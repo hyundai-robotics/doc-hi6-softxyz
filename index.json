@@ -1,0 +1,42 @@
+﻿[
+	{
+		"link": "README.md",
+		"char_ofs": 0,
+		"byte_ofs": 0
+	},
+	{
+		"link": "1-intro/README.md",
+		"char_ofs": 248,
+		"byte_ofs": 502
+	},
+	{
+		"link": "2-main/README.md",
+		"char_ofs": 796,
+		"byte_ofs": 1647
+	},
+	{
+		"link": "2-main/2.1-softxyz.md",
+		"char_ofs": 1157,
+		"byte_ofs": 2322
+	},
+	{
+		"link": "2-main/2.2-softxyz_lim.md",
+		"char_ofs": 2214,
+		"byte_ofs": 3957
+	},
+	{
+		"link": "3-example/README.md",
+		"char_ofs": 3477,
+		"byte_ofs": 5943
+	},
+	{
+		"link": "3-example/3.1-example.md",
+		"char_ofs": 3719,
+		"byte_ofs": 6455
+	},
+	{
+		"link": "3-example/3.2-example.md",
+		"char_ofs": 4336,
+		"byte_ofs": 7296
+	}
+]
