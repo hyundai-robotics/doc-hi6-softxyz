@@ -21,22 +21,22 @@
 	},
 	{
 		"link": "2-main/2.2-softxyz_lim.md",
-		"char_ofs": 2498,
-		"byte_ofs": 4489
+		"char_ofs": 2487,
+		"byte_ofs": 4475
 	},
 	{
 		"link": "3-example/README.md",
-		"char_ofs": 4056,
-		"byte_ofs": 7027
+		"char_ofs": 4034,
+		"byte_ofs": 7000
 	},
 	{
 		"link": "3-example/3.1-example.md",
-		"char_ofs": 4302,
-		"byte_ofs": 7543
+		"char_ofs": 4280,
+		"byte_ofs": 7516
 	},
 	{
 		"link": "3-example/3.2-example.md",
-		"char_ofs": 5074,
-		"byte_ofs": 8631
+		"char_ofs": 5048,
+		"byte_ofs": 8596
 	}
 ]
