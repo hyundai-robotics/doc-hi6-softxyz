@@ -1,8 +1,8 @@
 {
-    "langCode": "ko",
-    "series": "현대로봇 Hi6 제어기",
-    "title": "SoftXYZ 기능",
-    "publisher": "HD 현대로보틱스",
-    "tocTitle": "목차",
+    "langCode": "en",
+    "series": "Hyundai Robot Hi6 Controller",
+    "title": "SoftXYZ Function",
+    "publisher": "HD Hyundai Robotics",
+    "tocTitle": "Table of Contents",
     "tocTitleElements": "[ \"h1\", \"h2\" ]"
 }
