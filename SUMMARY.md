@@ -12,6 +12,6 @@
 
 ## 3. 예시
 * [3. 명령어 예시](3-example/README.md)
-  * [3.1 예제](3-example/3.1-example.md)
-  * [3.2 예제](3-example/3.2-example.md)
+  * [3.1 예제 - Z방향 조립 컴플라이언스 설정](3-example/3.1-example.md)
+  * [3.2 예제 - 사출물 핸들링](3-example/3.2-example.md)
   

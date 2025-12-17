@@ -24,7 +24,6 @@ SoftXYZ 기능은 **센서리스 힘제어** 방식으로, 사용자가 설정�
 본 기능은 **소프트웨어 기반**으로 동작하므로, **힘/토크 센서 등 별도의 추가 하드웨어 없이** 사용할 수 있습니다.
 
 
-
 --- 
 
 ## ⚠️ 주의사항
@@ -32,27 +31,41 @@ SoftXYZ 기능은 **센서리스 힘제어** 방식으로, 사용자가 설정�
 softxyz 기능은 **힘 센서를 사용하지 않는 기반 기능**이기 때문에,  
 부드럽고 자연스러운 모션 구현에는 **물리적 한계가 존재**합니다.
 
-다만, `softxyz_lim` 설정값을 작업 환경에 맞게 적절히 조절하면  
+다만, **softxyz_lim** 설정값을 작업 환경에 맞게 적절히 조절하면  
 최대한 부드러운 모션을 구현할 수 있습니다.
 
-`softxyz_lim (pos / xnr / vel / thr)` 값은 로봇이 외력에 반응하는 정도를 직접적으로 결정하므로,   환경 · 조립 공정 · 툴 강성 등에 따라 **세밀한 튜닝이 필요**합니다.
+**softxyz_lim** 값은 SoftXYZ 동작의 민감도와 거동을 좌우합니다.  
+공정 특성, 주변 환경, 그리고 툴 강성에 따라 적절한 튜닝이 반드시 요구됩니다.
 
 # 🧩 2. 명령어
 
-SoftXYZ 기능은 두 개의 명령어(`softxyz_lim`, `softxyz`)를 통해 설정 및 제어됩니다.
+SoftXYZ 기능은 두 개의 명령어(**softxyz_lim**, **softxyz**)를 통해 설정 및 제어됩니다.
 
-- **`softxyz_lim`** 명령어는 SoftXYZ 동작에 필요한 **기본 제한 파라미터를 사전에 정의**하는 역할을 합니다.
-- **`softxyz`** 명령어는 `softxyz_lim`에서 설정된 파라미터를 기준으로 **SoftXYZ 기능을 활성화 또는 비활성화**합니다.
+- ****softxyz_lim**** 명령어는 SoftXYZ 동작에 필요한 **기본 제한 파라미터를 사전에 정의**하는 역할을 합니다.
+- **softxyz** 명령어는 **softxyz_lim**에서 설정된 파라미터를 기준으로 **SoftXYZ 기능을 활성화 또는 비활성화**합니다.
 
-따라서 SoftXYZ 기능을 사용하기 위해서는, 반드시 `softxyz_lim` 명령어를 먼저 사용하여 **좌표축별 제한 조건과 동작 범위**를 설정한 후 `softxyz on` 명령어를 통해 기능을 활성화해야 합니다.
+따라서 SoftXYZ 기능을 사용하기 위해서는, 반드시 **softxyz_lim** 명령어를 먼저 사용하여 **좌표축별 제한 조건과 동작 범위**를 설정한 후 **softxyz on** 명령어를 통해 기능을 활성화해야 합니다.
 
 ## 🧩 2.1 softxyz
 
-센서를 사용하지 않고 외력에 대해 직교좌표 기준으로 로봇이 밀리는 기능
+
+**SoftXYZ**는 별도의 힘/토크 센서를 사용하지 않고,  
+외력이 인가될 경우 로봇이 **직교 좌표계(Cartesian frame) 기준으로 유연하게 변위(Compliance) 동작**을 수행하도록 하는 기능입니다.
+
+---
+
+### ⧉ 주요 특징
+- **센서리스 방식**  
+  추가 하드웨어 없이 소프트웨어 기반으로 외력 반응 구현
+- **직교 좌표 기준 제어**  
+  Base / Robot / Tool / User 좌표계 기준의 외력 대응 가능
+- **제한 기반 컴플라이언스**  
+  설정된 거리, 속도, 문턱값 범위 내에서만 안전하게 밀림 동작 수행
+---
 
 <br>
 
-### 문법
+### ⧉ 문법
 
 ```python
 softxyz on, crd=<기준좌표계>
@@ -61,7 +74,7 @@ softxyz off
 ```
 ---
 
-### 파라미터 
+### ⧉ 파라미터 
 - **on** : softxyz 기능 시작  
 - **off** : softxyz 기능 종료  
 - **set** : softxyz 설정값 변경  
@@ -82,11 +95,12 @@ softxyz on,  crd="user_1"   # 사용자 정의 좌표계 1번
 softxyz set, dpr=1.0        # 강성값 설정 (0.0~2.0, 값이 클수록 단단함)
 softxyz off                  # 기능 종료 
 ```
+---
 
 <br>
 
 > ✅ **정보**  
-> - `softxyz on`을 사용하기 전에 **반드시** `softxyz_lim` 명령을 통해  
+> - `softxyz on`을 사용하기 전에 **반드시** **softxyz_lim** 명령을 통해  
 >   `pos`, `xnr`, `vel`, `thr` 값을 설정해야 합니다.  
 >   (최대 밀림 거리, 속도, 직교좌표 문턱값 설정 필수)
 >
@@ -99,34 +113,59 @@ softxyz off                  # 기능 종료
 >   3) *vel 값을 낮춘다*
 ## 🧩 2.2 softxyz_lim 
 
-softxyz_lim 명령어는 softxyz on 기능 사용 전 파라미터 값을 미리 설정 해야 합니다. <br>
+**softxyz_lim** 명령어는 `softxyz on` 기능을 활성화하기 전에  
+SoftXYZ 동작에 필요한 **기본 제한 파라미터를 사전에 정의하는 설정 명령어**입니다.
 
-사용자는 활성화 되는 로봇의 직교좌표 거리 제한, 위치, 속도 및 문턱값등을 설정 할 수 있습니다.    
+본 명령어를 통해 사용자는 SoftXYZ가 적용되는 동안 로봇이 허용된 범위 내에서만 동작하도록  
+**직교 좌표계 기준의 이동 거리, 위치 범위, 속도 제한 및 외력 문턱값**을 설정할 수 있습니다.
+
+---
+
+### ⧉ 설정 목적
+- 외력에 대한 **로봇의 반응 범위 제한**
+- 과도한 변위 및 속도 발생 방지
+- 공정 및 작업 환경에 적합한 **안정적인 컴플라이언스 동작 구현**
+
+---
 
 <br>
 
-
-### 설명 
-* softxyz 파라미터를 설정합니다.  
-
-
-### 문법 
-```pythonghlt
-softxyz_lim pos,_x=<+X거리>,x_=<-X거리>,_y=<+Y거리>,y_=<-Y거리>,_z=<+Z거리>,z_=<-Z거리> 
-softxyz_lim vel,x=<X속도>,y=<Y속도>,z=<Z속도>,rx=<Rx속도>,ry=<Ry속도>,rz=<Rz속도> 
-softxyz_lim xnr,x=<X거리>,y=<Y거리>,z=<Z거리>,rx=<Rx거리>,ry=<Ry거리>,rz=<Rz거리> 
-softxyz_lim thr,x=<X문턱값>,y=<Y문턱값>,z=<Z문턱값>,rx=<Rx문턱값>,ry=<Ry문턱값>,rz=<Rz문턱값> 
+### ⧉ 문법 
+```python
+softxyz_lim pos,_x=<+X>,x_=<-X>,_y=<+Y>,y_=<-Y>,_z=<+Z>,z_=<-Z>
+softxyz_lim vel,x=<X>,y=<Y>,z=<Z>,rx=<Rx>,ry=<Ry>,rz=<Rz>
+softxyz_lim xnr,x=<X>,y=<Y>,z=<Z>,rx=<Rx>,ry=<Ry>,rz=<Rz>
+softxyz_lim thr,x=<X>,y=<Y>,z=<Z>,rx=<Rx>,ry=<Ry>,rz=<Rz>
 ```
 
-### 파라미터 
-* softxyz_lim pos : 로봇이 이동할 수 있는 직교좌표 최대 거리를 설정합니다. (X,Y,Z방향) [mm] 
-* softxyz_lim vel : 로봇이 동작하는 직교좌표 최대 속도를 설정합니다. (X,Y,Z,Rx,Ry,Rz방향) [mm/sec] or [deg/sec] 
-* softxyz_lim xnr : 로봇이 이동할 수 있는 직교좌표 최대 거리와 각도를 제한합니다. (X,Y,Z,Rx,Ry,Rz방향) [mm] or [deg] <br> 
-  (로봇의 최대 동작영역은 pos와 xnr의 합집합으로 결정됩니다.)  
-* softxyz_lim thr : 로봇이 이동하기 위한 직교좌표 힘 문턱값을 설정합니다. (X,Y,Z,Rx,Ry,Rz방향) [N] or [Nm]
+<br>
 
+### ⧉ 파라미터 
+* **pos (위치 제한)**  
+  로봇이 이동할 수 있는 **직교 좌표계 기준 최대 변위 거리**를 설정합니다. (X, Y, Z 방향)  
+  단위: [mm]
 
-### 사용 예 
+* **vel (속도 제한)**  
+  SoftXYZ 동작 중 로봇의 **직교 좌표계 기준 최대 이동 속도**를 설정합니다.  
+  적용 축: X, Y, Z, Rx, Ry, Rz  
+  단위: [mm/sec] 또는 [deg/sec]
+
+* **xnr (동작 범위 / 각도 제한)**  
+  로봇이 이동할 수 있는 **직교 좌표계 기준 최대 거리 및 회전 각도**를 제한합니다.  
+  적용 축: X, Y, Z, Rx, Ry, Rz  
+  단위: [mm] 또는 [deg]  
+  <br>
+  > 로봇의 실제 동작 가능 영역은 `pos`와 `xnr` 설정값의 **조합**에 의해 결정됩니다.
+
+* **thr (힘 문턱값)**  
+  로봇이 외력에 반응하여 움직이기 시작하기 위한 **직교 좌표계 기준 힘/토크 문턱값**을 설정합니다.  
+  적용 축: X, Y, Z, Rx, Ry, Rz  
+  단위: [N] 또는 [Nm]
+---
+
+<br>
+
+### ⧉ 설정 
 > * +X방향200[mm], -Y방향100[mm], +Z방향300[mm]로 이동하는 최대 거리를 설정합니다.  
 ```python
 softxyz_lim pos, _x=200, y_=100, _z=300
@@ -146,48 +185,85 @@ softxyz_lim thr, y=10
 # 🧩 3. 예시
 
 본 절에서는 SoftXYZ 기능의 실제 사용 방법을 이해할 수 있도록  
-`softxyz_lim` 및 `softxyz` 명령어를 활용한 **대표적인 설정 및 프로그램 예제**를 제공합니다.
+**softxyz_lim** 및 **softxyz** 명령어를 활용한 **대표적인 설정 및 프로그램 예제**를 제공합니다.
 
 각 예제는 적용 좌표축, 이동 범위, 속도 제한, 문턱값 등 주요 파라미터 설정에 따른 SoftXYZ 동작 특성을 확인하는 것을 목적으로 하며,  
 실제 접촉 작업 및 힘 제어 환경에서의 응용을 고려하여 구성되었습니다.
-## 🧩 3.1 예제 
+## 🧩 3.1 예제 - Z방향 조립 컴플라이언스 설정
 
-* Z방향으로 조립하기 위해 X, Y, Ry 방향으로 밀릴 수 있도록 한 경우  
+본 예제는 **Z방향으로 조립 작업을 수행하는 과정에서**,  
+외력 발생 시 로봇이 **X, Y 및 Ry 방향으로 제한적으로 밀리도록 설정한 사례**입니다.
 
-<br> 
+---
 
-> * 좌표계 : 로봇좌표계 기준 (crd="robot") <br>
-> * 이동 위치(xnr) 제한 설정 : X, Y방향으로 [-50,+50] 범위(mm), Ry방향 [-3,+3] 범위(deg) <br>
-> * 속도(vel) 제한 설정 : X, Y방향으로 최대 5mm/sec, Ry방향으로 3deg/sec 밀리도록 설정 <br>
-> * 문턱값(thr) 제한 설정 : X방향 3N, Y방향 3N 그리고 Ry방향 1Nm 
+### 📌 설정 요약
+
+- **기준 좌표계**  
+  로봇 좌표계 기준 (`crd="robot"`)
+
+- **이동 범위 제한 (`xnr`)**  
+  - X, Y 방향: −50 mm ~ +50 mm  
+  - Ry 방향: −3 deg ~ +3 deg
+
+- **속도 제한 (`vel`)**  
+  - X, Y 방향: 최대 5 mm/sec  
+  - Ry 방향: 최대 3 deg/sec
+
+- **문턱값 제한 (`thr`)**  
+  - X 방향: 3 N  
+  - Y 방향: 3 N  
+  - Ry 방향: 1 Nm
+
+---
+
+### ✅ 프로그램 예제
 
 ```python
-S1   move P,spd=100mm/sec,accu=0,tool=0
-     delay 2.0 # softxyz on 하기 전에 delay 설정 필수  
+S1   move P, spd=100mm/sec, accu=0, tool=0
+     delay 2.0                 # SoftXYZ 활성화 전 필수 대기 시간
+
      softxyz_lim xnr, x=50, y=50, ry=3
-     softxyz_lim vel, x=5, y=5, ry=3
+     softxyz_lim vel, x=5,  y=5,  ry=3
      softxyz_lim thr, x=20, y=20, ry=3
+
      softxyz on, crd="robot"
-S2   move P,spd=250mm/sec,accu=0,tool=0
-     softxyz off 
-     end 
-```
 
-## 🧩 3.2 예제
+S2   move P, spd=250mm/sec, accu=0, tool=0
+     softxyz off
+     end
+```     
+## 🧩 3.2 — 사출물 핸들링
 
-* 사출물 핸들링
+본 예제는 **사출물 핸들링 작업 중 외력에 따라 로봇이 Y방향으로 유연하게 밀리도록 설정한 사례**입니다.  
+제품 취출 및 위치 오차 흡수와 같은 작업 환경을 고려하여 구성되었습니다.
 
-> * 좌표계 : 로봇좌표계 기준 (crd="robot") <br>
-> * 위치(pos) 제한 설정 : +Y방향으로 최대 300mm까지, -Y방향으로 최대 200mm 까지 이동 <br>
-> * 속도(vel) 제한 설정 : Y방향으로 최대 150mm/sec 속도로 밀리도록 설정 <br>
+### 📌 설정 요약
+
+- **기준 좌표계**  
+  로봇 좌표계 기준 (`crd="robot"`)
+
+- **위치 제한 (`pos`)**  
+  - +Y 방향: 최대 300 mm  
+  - −Y 방향: 최대 200 mm
+
+- **속도 제한 (`vel`)**  
+  - Y 방향: 최대 150 mm/sec
+
+---
+
+
+### ✅ 프로그램 예제
 
 ```python
-S1   move P,spd=100mm/sec,accu=0,tool=0
-     delay 2.0 # softxyz on 하기 전에 delay 설정 필수  
+S1   move P, spd=100mm/sec, accu=0, tool=0
+     delay 2.0                 # SoftXYZ 활성화 전 필수 대기 시간
+
      softxyz_lim pos, _y=300, y_=200
      softxyz_lim vel, y=150
+
      softxyz on, crd="robot"
-S2   wait ... 
-     softxyz off 
-     end 
-```
+
+S2   wait ...
+     softxyz off
+     end
+```     
