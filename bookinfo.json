@@ -4,5 +4,8 @@
     "title": "SoftXYZ 기능",
     "publisher": "HD 현대로보틱스",
     "tocTitle": "목차",
-    "tocTitleElements": "[ \"h1\", \"h2\" ]"
+    "tocTitleElements": "[ \"h1\", \"h2\" ]",
+    "variables": {
+        "cont_model": "Hi6"
+    }
 }
