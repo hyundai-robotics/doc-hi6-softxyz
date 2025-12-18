@@ -6,37 +6,37 @@
 	},
 	{
 		"link": "1-intro/README.md",
-		"char_ofs": 505,
-		"byte_ofs": 527
+		"char_ofs": 515,
+		"byte_ofs": 537
 	},
 	{
 		"link": "2-main/README.md",
-		"char_ofs": 1632,
-		"byte_ofs": 1684
+		"char_ofs": 1642,
+		"byte_ofs": 1694
 	},
 	{
 		"link": "2-main/2.1-softxyz.md",
-		"char_ofs": 2214,
-		"byte_ofs": 2280
+		"char_ofs": 2224,
+		"byte_ofs": 2290
 	},
 	{
 		"link": "2-main/2.2-softxyz_lim.md",
-		"char_ofs": 3931,
-		"byte_ofs": 4060
+		"char_ofs": 3941,
+		"byte_ofs": 4070
 	},
 	{
 		"link": "3-example/README.md",
-		"char_ofs": 6044,
-		"byte_ofs": 6241
+		"char_ofs": 6054,
+		"byte_ofs": 6251
 	},
 	{
 		"link": "3-example/3.1-example.md",
-		"char_ofs": 6560,
-		"byte_ofs": 6768
+		"char_ofs": 6570,
+		"byte_ofs": 6778
 	},
 	{
 		"link": "3-example/3.2-example.md",
-		"char_ofs": 7472,
-		"byte_ofs": 7712
+		"char_ofs": 7482,
+		"byte_ofs": 7722
 	}
 ]

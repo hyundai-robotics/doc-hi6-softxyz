@@ -1,4 +1,4 @@
-﻿# Hi6 Robot Controller Function Description – SoftXYZ Function
+﻿# ${cont_model} Robot Controller Function Description – SoftXYZ Function
 
 The information provided in this product manual is the property of **HD Hyundai Robotics**.
 
