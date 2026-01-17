@@ -1,4 +1,4 @@
-﻿# 🧩 3. Examples
+﻿# 3. Examples
 
 This section provides **representative configuration and program examples** using the `softxyz_lim` and `softxyz` commands to help users understand the practical usage of the SoftXYZ function.
 

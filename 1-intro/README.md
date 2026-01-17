@@ -1,4 +1,4 @@
-﻿# 🧩 1. Overview
+﻿# 1. Overview
 
 The SoftXYZ function is a **sensorless force control** feature that allows the robot to move compliantly in response to external forces based on a **Cartesian coordinate** frame within a user-defined environment.
 

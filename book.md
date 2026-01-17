@@ -1,19 +1,9 @@
-﻿# ${cont_model} Robot Controller Function Description – SoftXYZ Function
+﻿
+[__SOURCE](README.md)
+# ${cont_model} Controller Function Description - SoftXYZ
 
-The information provided in this product manual is the property of **HD Hyundai Robotics**.
-
-Without prior written consent from HD Hyundai Robotics, this document may not be reproduced or redistributed, in whole or in part.  
-It may not be provided to third parties or used for any purpose other than its intended use.
-
-This manual is subject to change without prior notice.
-
-<br>
-<br>
-<br>
-<br>
-
-**Copyright ⓒ 2025 by HD Hyundai Robotics**
-# 🧩 1. Overview
+[__SOURCE](1-intro/README.md)
+# 1. Overview
 
 The SoftXYZ function is a **sensorless force control** feature that allows the robot to move compliantly in response to external forces based on a **Cartesian coordinate** frame within a user-defined environment.
 
@@ -34,7 +24,9 @@ it is possible to achieve motion that is as smooth as practicable.
 The `softxyz_lim (pos / xnr / vel / thr)` values directly determine how the robot responds to external forces.  
 Therefore, **fine-tuning is required** depending on factors such as the environment, assembly process, and tool rigidity.
 
-# 🧩 2. Commands
+
+[__SOURCE](2-main/README.md)
+# 2. Commands
 
 The SoftXYZ function is configured and controlled using two commands: `softxyz_lim` and `softxyz`.
 
@@ -43,7 +35,9 @@ The SoftXYZ function is configured and controlled using two commands: `softxyz_l
 
 Therefore, to use the SoftXYZ function, you must first configure the **axis-specific limits and operational ranges** using the `softxyz_lim` command, and then activate the function using the `softxyz on` command.
 
-## 🧩 2.1 softxyz
+
+[__SOURCE](2-main/2.1-softxyz.md)
+## 2.1 softxyz
 
 A function that allows the robot to be displaced by external forces in a Cartesian coordinate frame without using any sensors.
 
@@ -78,7 +72,7 @@ softxyz on,  crd="robot"    # Robot coordinate frame
 softxyz on,  crd="tool"     # Tool coordinate frame
 softxyz on,  crd="user_1"   # User-defined coordinate frame 1
 
-softxyz set, dpr=1.0        # Set stiffness value (0.0–2.0, higher = stiffer)
+softxyz set, dpr=1.0        # Set stiffness value (0.0-2.0, higher = stiffer)
 softxyz off                 # Disable the function
 ```
 
@@ -89,17 +83,19 @@ softxyz off                 # Disable the function
 >   (Setting the maximum displacement, velocity, and Cartesian threshold values is mandatory.)
 >
 > - To increase sensitivity to external forces, it is recommended to  
->   **keep the robot stationary for 1–2 seconds using a delay command** before executing `softxyz on`.
+>   **keep the robot stationary for 1-2 seconds using a delay command** before executing `softxyz on`.
 >
 > - If vibration occurs during SoftXYZ operation, the following actions are recommended:
 >   1) *Increase the `thr` value*  
 >   2) *Increase the `dpr` value*  
 >   3) *Decrease the `vel` value*
-## 🧩 2.2 softxyz_lim
+
+[__SOURCE](2-main/2.2-softxyz_lim.md)
+## 2.2 softxyz_lim
 
 The `softxyz_lim` command is used to **preconfigure parameter values before activating the `softxyz on` function**. <br>
 
-With this command, the user can configure limits related to the robot’s Cartesian behavior, including **maximum displacement**, **position**, **velocity**, and **threshold values**.  
+With this command, the user can configure limits related to the robot's Cartesian behavior, including **maximum displacement**, **position**, **velocity**, and **threshold values**.  
 
 --- 
 <br>
@@ -126,7 +122,7 @@ softxyz_lim thr,x=<X_thr>,y=<Y_thr>,z=<Z_thr>,rx=<Rx_thr>,ry=<Ry_thr>,rz=<Rz_thr
 
 * **softxyz_lim xnr** : Limits the maximum Cartesian displacement and rotational angles of the robot in the X, Y, Z, Rx, Ry, and Rz directions.  
   Unit: [mm] or [deg] <br>  
-  (The robot’s maximum operating workspace is determined by the **union of the `pos` and `xnr` limits**.)
+  (The robot's maximum operating workspace is determined by the **union of the `pos` and `xnr` limits**.)
 
 * **softxyz_lim thr** : Sets the Cartesian force/torque threshold required for the robot to start moving in response to external force, in the X, Y, Z, Rx, Ry, and Rz directions.  
   Unit: [N] or [Nm]
@@ -134,7 +130,7 @@ softxyz_lim thr,x=<X_thr>,y=<Y_thr>,z=<Z_thr>,rx=<Rx_thr>,ry=<Ry_thr>,rz=<Rz_thr
 <br>
 
 ### Usage Examples
-> * Sets the maximum allowable displacement to +200 mm in the +X direction, 100 mm in the −Y direction, and 300 mm in the +Z direction.  
+> * Sets the maximum allowable displacement to +200 mm in the +X direction, 100 mm in the -Y direction, and 300 mm in the +Z direction.  
 ```python
 softxyz_lim pos, _x=200, y_=100, _z=300
 ```
@@ -142,7 +138,7 @@ softxyz_lim pos, _x=200, y_=100, _z=300
 ```python
 softxyz_lim vel, z=40
 ```
-> * Sets the allowable movement range in the X direction from −200 mm to +200 mm.
+> * Sets the allowable movement range in the X direction from -200 mm to +200 mm.
 ```python
 softxyz_lim xnr, x=200
 ```
@@ -150,20 +146,24 @@ softxyz_lim xnr, x=200
 ```python
 softxyz_lim thr, y=10
 ```
-# 🧩 3. Examples
+
+[__SOURCE](3-example/README.md)
+# 3. Examples
 
 This section provides **representative configuration and program examples** using the `softxyz_lim` and `softxyz` commands to help users understand the practical usage of the SoftXYZ function.
 
 Each example is designed to demonstrate the behavior of SoftXYZ based on key parameter settings, such as **active axes**, **movement ranges**, **velocity limits**, and **threshold values**.  
 The examples are structured with consideration for real-world **contact tasks and force-control applications**.
-## 🧩 3.1 Example
+
+[__SOURCE](3-example/3.1-example.md)
+## 3.1 Example
 
 * Example where the robot is allowed to be displaced in the X, Y, and Ry directions in order to perform an assembly operation along the Z direction.
 
 <br>
 
 > * Coordinate frame: Robot coordinate frame (`crd="robot"`) <br>
-> * Movement range (`xnr`) limits: X and Y directions within [−50, +50] mm, Ry direction within [−3, +3] deg <br>
+> * Movement range (`xnr`) limits: X and Y directions within [-50, +50] mm, Ry direction within [-3, +3] deg <br>
 > * Velocity (`vel`) limits: Maximum 5 mm/sec in the X and Y directions, and 3 deg/sec in the Ry direction <br>
 > * Threshold (`thr`) limits: 3 N in the X direction, 3 N in the Y direction, and 1 Nm in the Ry direction
 
@@ -179,12 +179,14 @@ S2   move P, spd=250mm/sec, accu=0, tool=0
      softxyz off
      end 
 ```
-## 🧩 3.2 Example
+
+[__SOURCE](3-example/3.2-example.md)
+## 3.2 Example
 
 * Injection-molded part handling
 
 > * Coordinate frame: Robot coordinate frame (`crd="robot"`) <br>
-> * Position (`pos`) limits: Up to 300 mm in the +Y direction and up to 200 mm in the −Y direction <br>
+> * Position (`pos`) limits: Up to 300 mm in the +Y direction and up to 200 mm in the -Y direction <br>
 > * Velocity (`vel`) limits: Maximum compliant velocity of 150 mm/sec in the Y direction <br>
 
 ```python

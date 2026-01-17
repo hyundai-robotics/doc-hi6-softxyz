@@ -1,6 +1,6 @@
 ﻿# Table of Contents
 
-* [${cont_model} Robot Controller Function Description – SoftXYZ Function](README.md)
+* [${cont_model} Controller Function Description - SoftXYZ](README.md)
 
 ## 1. Overview
 * [1. Overview](1-intro/README.md)

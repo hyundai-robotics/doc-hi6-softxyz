@@ -1,4 +1,4 @@
-﻿# 🧩 2. Commands
+﻿# 2. Commands
 
 The SoftXYZ function is configured and controlled using two commands: `softxyz_lim` and `softxyz`.
 
