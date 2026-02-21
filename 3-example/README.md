@@ -1,6 +1,6 @@
-﻿# 3. Examples
+﻿# 3. 示例
 
-This section provides **representative configuration and program examples** using the `softxyz_lim` and `softxyz` commands to help users understand the practical usage of the SoftXYZ function.
+本节提供 **代表性的配置和程序示例**，使用 `softxyz_lim` 和 `softxyz` 命令，帮助用户理解 SoftXYZ 功能的实际使用。
 
-Each example is designed to demonstrate the behavior of SoftXYZ based on key parameter settings, such as **active axes**, **movement ranges**, **velocity limits**, and **threshold values**.  
-The examples are structured with consideration for real-world **contact tasks and force-control applications**.
+每个示例旨在基于关键参数设置演示 SoftXYZ 的行为，例如 **活动轴**、**运动范围**、**速度限制**和 **阈值**。  
+这些示例的结构考虑了现实世界中的 **接触任务和力控制应用**。
