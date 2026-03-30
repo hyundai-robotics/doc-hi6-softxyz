@@ -161,7 +161,7 @@ Each example is designed to demonstrate the behavior of SoftXYZ based on key par
 The examples are structured with consideration for real-world **contact tasks and force-control applications**.
 
 [__SOURCE](3-example/3.1-example.md)
-## 3.1 Example - Z-direction assembly compliance settings
+## 3.1 Example - Z direction assembly compliance settings
 
 * Example where the robot is allowed to be displaced in the X, Y, and Ry directions in order to perform an assembly operation along the Z direction.
 
@@ -186,7 +186,7 @@ S2   move P, spd=250mm/sec, accu=0, tool=0
 ```
 
 [__SOURCE](3-example/3.2-example.md)
-## 3.2 Example - Injection-molded part handling
+## 3.2 Example - Injection molded part handling
 
 * Injection-molded part handling
 

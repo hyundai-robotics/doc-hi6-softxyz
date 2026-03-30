@@ -14,5 +14,5 @@
 
 ## 3. Examples
 * [3. Command Examples](3-example/README.md)
-  * [3.1 Example](3-example/3.1-example.md)
-  * [3.2 Example](3-example/3.2-example.md)
+  * [3.1 Example - Z direction assembly compliance](3-example/3.1-example.md)
+  * [3.2 Example - Injection molded part handling](3-example/3.2-example.md)
