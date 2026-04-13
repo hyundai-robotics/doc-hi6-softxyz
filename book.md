@@ -5,7 +5,7 @@
 [__SOURCE](0-about-this-manual/precautions.md)
 # 사전 주의사항
 
-{% include url="https://hrcontentsrelay-bmgae5hdbzapc4bc.koreacentral-01.azurewebsites.net/api/proxy?path=doc-common-pages/ko/precautions.md" %}
+{% include file="ko/precautions.md" %}
 
 [__SOURCE](1-intro/README.md)
 # 1. 개요
@@ -93,18 +93,18 @@ softxyz off                  # 기능 종료
 ```
 ---
 
-> ✅ **정보**  
-> - `softxyz on`을 사용하기 전에 **반드시** **softxyz_lim** 명령을 통해  
->   `pos`, `xnr`, `vel`, `thr` 값을 설정해야 합니다.  
->   (최대 밀림 거리, 속도, 직교좌표 문턱값 설정 필수)
->
-> - 외력 민감도를 높이기 위해 `softxyz on` 실행 전에  
->   **delay 명령으로 1~2초 동안 로봇을 정지**시켜 두는 것이 좋습니다.
->
-> - softxyz 동작 중 떨림이 발생할 경우 다음과 같은 조치를 권장합니다.
->   1) *thr 값을 높인다*  
->   2) *dpr 값을 높인다*  
->   3) *vel 값을 낮춘다*
+### **정보**  
+- `softxyz on`을 사용하기 전에 **반드시** **softxyz_lim** 명령을 통해  
+  `pos`, `xnr`, `vel`, `thr` 값을 설정해야 합니다.  
+  (최대 밀림 거리, 속도, 직교좌표 문턱값 설정 필수)
+
+- 외력 민감도를 높이기 위해 `softxyz on` 실행 전에  
+  **delay 명령으로 1~2초 동안 로봇을 정지**시켜 두는 것이 좋습니다.
+
+- softxyz 동작 중 떨림이 발생할 경우 다음과 같은 조치를 권장합니다.
+  1) *thr 값을 높인다*  
+  2) *dpr 값을 높인다*  
+  3) *vel 값을 낮춘다*
 
 [__SOURCE](2-main/2.2-softxyz_lim.md)
 ## 2.2 softxyz_lim 
