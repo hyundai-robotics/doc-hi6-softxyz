@@ -46,7 +46,16 @@ Therefore, to use the SoftXYZ function, you must first configure the **axis-spec
 
 A function that allows the robot to be displaced by external forces in a Cartesian coordinate frame without using any sensors.
 
-<br>
+---
+
+### Main Features
+- **Sensorless Approach**  
+  External force response is implemented purely through software without additional hardware
+- **Cartesian Coordinate-Based Control**  
+  External force handling is possible based on Base / Robot / Tool / User coordinate systems
+- **Constraint-Based Compliance**  
+  Safe push-back motion is performed only within predefined limits of distance, speed, and threshold values
+---
 
 ### Syntax
 
@@ -80,20 +89,19 @@ softxyz on,  crd="user_1"   # User-defined coordinate frame 1
 softxyz set, dpr=1.0        # Set stiffness value (0.0-2.0, higher = stiffer)
 softxyz off                 # Disable the function
 ```
+---
 
-<br>
+### Information  
+- Before using `softxyz on`, you **must** configure the `pos`, `xnr`, `vel`, and `thr` values using the `softxyz_lim` command.  
+   (Setting the maximum displacement, velocity, and Cartesian threshold values is mandatory.)
 
-> ✅ **Information**  
-> - Before using `softxyz on`, you **must** configure the `pos`, `xnr`, `vel`, and `thr` values using the `softxyz_lim` command.  
->   (Setting the maximum displacement, velocity, and Cartesian threshold values is mandatory.)
->
-> - To increase sensitivity to external forces, it is recommended to  
->   **keep the robot stationary for 1-2 seconds using a delay command** before executing `softxyz on`.
->
-> - If vibration occurs during SoftXYZ operation, the following actions are recommended:
->   1) *Increase the `thr` value*  
->   2) *Increase the `dpr` value*  
->   3) *Decrease the `vel` value*
+ - To increase sensitivity to external forces, it is recommended to  
+   **keep the robot stationary for 1-2 seconds using a delay command** before executing `softxyz on`.
+
+ - If vibration occurs during SoftXYZ operation, the following actions are recommended:
+   1) *Increase the `thr` value*  
+   2) *Increase the `dpr` value*  
+   3) *Decrease the `vel` value*
 
 [__SOURCE](2-main/2.2-softxyz_lim.md)
 ## 2.2 softxyz_lim
@@ -103,11 +111,13 @@ The `softxyz_lim` command is used to **preconfigure parameter values before acti
 With this command, the user can configure limits related to the robot's Cartesian behavior, including **maximum displacement**, **position**, **velocity**, and **threshold values**.  
 
 --- 
-<br>
 
-### Description
-* Configures SoftXYZ parameters. 
+### Configuration Objectives
+- **Limit the robot's response range** to external forces
+- Prevent excessive displacement and velocity
+- Implement **stable compliance behavior** suitable for the process and working environment
 
+---
 
 ### Syntax
 ```python
