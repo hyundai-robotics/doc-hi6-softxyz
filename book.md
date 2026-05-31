@@ -18,7 +18,7 @@ Since this function operates on a **software-based** approach, it can be used **
 
 --- 
 
-## ⚠️ Precautions
+{% hint style="warning" %}
 
 Since the SoftXYZ function is a **sensorless, force-sensor-free control feature**,  
 there are **physical limitations** to achieving perfectly smooth and natural motion.
@@ -29,7 +29,7 @@ it is possible to achieve motion that is as smooth as practicable.
 The `softxyz_lim (pos / xnr / vel / thr)` values directly determine how the robot responds to external forces.  
 Therefore, **fine-tuning is required** depending on factors such as the environment, assembly process, and tool rigidity.
 
-
+{% endhint %}
 [__SOURCE](2-main/README.md)
 # 2. Commands
 
