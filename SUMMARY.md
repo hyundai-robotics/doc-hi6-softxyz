@@ -2,7 +2,9 @@
 
 * [${cont_model} Controller Function Description - SoftXYZ](README.md)
 
-* [Precautions](0-about-this-manual/precautions.md)
+* [About the Manual](0-about-this-manual/README.md)
+  * [Precautions](0-about-this-manual/precautions.md)
+  * [Safety Cautions](0-about-this-manual/safety-notice.md)
 
 ## 1. Overview
 * [1. Overview](1-intro/README.md)
