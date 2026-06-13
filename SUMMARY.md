@@ -1,7 +1,9 @@
 ﻿# Table of contents
 
 * [${cont_model} 控制器功能描述 - SoftXYZ](README.md)
-* [注意事项](0-about-this-manual/precautions.md)
+* [关于手册](0-about-this-manual/README.md)
+  * [注意事项](0-about-this-manual/precautions.md)
+  * [安全注意事项](0-about-this-manual/safety-notice.md)
 * [1. 概述](1-intro/README.md)
 * [2. 命令](2-main/README.md)
   * [2.1 softxyz](2-main/2.1-softxyz.md)
