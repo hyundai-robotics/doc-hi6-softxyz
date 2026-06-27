@@ -1,1 +1,1 @@
-﻿# ${cont_model} Controller Function Description - SoftXYZ
+﻿# ${cont_model} 控制器功能描述 - SoftXYZ

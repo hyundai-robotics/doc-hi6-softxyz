@@ -1,22 +1,22 @@
-﻿# 1. Overview
+﻿# 1. 概述
 
-The SoftXYZ function is a **sensorless force control** feature that allows the robot to move compliantly in response to external forces based on a **Cartesian coordinate** frame within a user-defined environment.
+SoftXYZ 功能是一个 **无传感器力控制** 特性，允许机器人在用户定义的环境中，根据 **笛卡尔坐标** 框架对外部力做出柔顺移动。
 
-To use this function accurately, the information for the **tool** mounted on the robot or any **additional payload** must be configured correctly.
+要准确使用此功能，必须正确配置安装在机器人上的 **工具** 或任何 **附加负载** 的信息。
 
-Since this function operates on a **software-based** approach, it can be used **without any additional hardware**, such as force/torque sensors.
+由于此功能基于 **软件实现**，因此可以 **不需要任何额外硬件**，如力/扭矩传感器。
 
---- 
+---
 
 {% hint style="warning" %}
 
-Since the SoftXYZ function is a **sensorless, force-sensor-free control feature**,  
-there are **physical limitations** to achieving perfectly smooth and natural motion.
+由于 SoftXYZ 功能是一个 **无传感器、无力传感器的控制特性**，  
+因此在实现完全平滑和自然运动方面存在 **物理限制**。
 
-However, by appropriately adjusting the `softxyz_lim` parameters to match the working environment,  
-it is possible to achieve motion that is as smooth as practicable.
+然而，通过适当调整 `softxyz_lim` 参数以匹配工作环境，  
+可以实现尽可能平滑的运动。
 
-The `softxyz_lim (pos / xnr / vel / thr)` values directly determine how the robot responds to external forces.  
-Therefore, **fine-tuning is required** depending on factors such as the environment, assembly process, and tool rigidity.
+`softxyz_lim (pos / xnr / vel / thr)` 值直接决定了机器人如何响应外部力。  
+因此，**需要根据环境、组装过程和工具刚性等因素进行微调**。
 
 {% endhint %}

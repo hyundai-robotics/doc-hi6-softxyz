@@ -1,9 +1,8 @@
-﻿# 2. Commands
+﻿# 2. 命令
 
-The SoftXYZ function is configured and controlled using two commands: `softxyz_lim` and `softxyz`.
+SoftXYZ 功能通过两个命令进行配置和控制：`softxyz_lim` 和 `softxyz`。
 
-- The **`softxyz_lim`** command is used to **predefine the fundamental limit parameters** required for SoftXYZ operation.
-- The **`softxyz`** command **enables or disables the SoftXYZ function** based on the parameters configured via `softxyz_lim`.
+- **`softxyz_lim`** 命令用于 **预定义 SoftXYZ 操作所需的基本限制参数**。
+- **`softxyz`** 命令 **根据通过 `softxyz_lim` 配置的参数启用或禁用 SoftXYZ 功能**。
 
-Therefore, to use the SoftXYZ function, you must first configure the **axis-specific limits and operational ranges** using the `softxyz_lim` command, and then activate the function using the `softxyz on` command.
-
+因此，要使用 SoftXYZ 功能，您必须首先使用 `softxyz_lim` 命令配置 **特定于轴的限制和操作范围**，然后使用 `softxyz on` 命令激活该功能。
